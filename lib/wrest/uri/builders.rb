@@ -36,6 +36,13 @@ module Wrest
         clone(:cache_store => Wrest::Caching::BoundedHash.new)
       end
 
+      # Returns a Uri object that uses elasticache for caching responses.
+      # Remember to do Wrest::AsyncRequest.enable_elasticache first so that
+      # elasticache is available for use.
+      def using_elasticache
+        clone(:cache_store => Wrest::Caching::ElastiCache.new)
+      end
+
       # Disables using the globally configured cache for GET requests 
       # made using the Uri returned by this method.
       def disable_cache

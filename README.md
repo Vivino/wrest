@@ -129,6 +129,7 @@ Wrest supports caching with the following pluggable back-ends:
   - Hash
   - Memcached
   - Redis
+  - ElastiCache
 
 ####Hash
 
@@ -190,6 +191,24 @@ To explicitly disable caching for specific requests:
 
 ```
     "http://c42.in".to_uri.disable_cache.get
+```
+
+####ElastiCache
+
+A ElastiCache based caching back-end is available in Wrest. You can get instructions on how to install Memcached on your system [here](http://code.google.com/p/memcached/wiki/NewInstallFromPackage).
+The Dalli-ElastiCache gem is used by Wrest to interface with ElastiCache. Install dalli using 'gem install dalli-elasticache'.
+
+Use the following method to enable caching for all requests, and set ElastiCache as the default back-end.
+
+```
+    Wrest::Caching.default_to_elasticache!
+```
+
+To use ElastiCache as a cache store in an explicit request (without setting ElastiCache as default), use the following API:
+
+```
+    Wrest::Caching.enable_elasticache
+    r2 = "http://c42.in".to_uri.using_elasticache.get
 ```
 
 ### Callbacks

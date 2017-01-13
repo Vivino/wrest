@@ -24,6 +24,11 @@ module Wrest
       require "wrest/caching/bounded_hash"
     end
 
+    # Loads the ElastiCache caching back-end and the dalli-elasticache gem
+    def self.enable_elasticache
+      require "wrest/caching/elasti_cache"
+    end
+
     # Configures Wrest to cache all requests. This will use a Ruby Hash.
     # WARNING: This should NEVER be used in a real environment. The Hash will 
     # keep growing since Wrest does not limit the size of a cache store.
@@ -51,6 +56,12 @@ module Wrest
     def self.default_to_bounded_hash!
       self.enable_bounded_hash
       self.default_store = Wrest::Caching::BoundedHash.new
+    end
+
+    # Default Wrest to using elasticache for caching requests.
+    def self.default_to_elasticache!
+      self.enable_elasticache
+      self.default_store = Wrest::Caching::ElastiCache.new
     end
 
     # Assign the default cache store to be used. Default is none.

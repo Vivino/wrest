@@ -16,6 +16,7 @@ Gem::Specification.new do |s|
   s.rubyforge_project = "wrest"
 
   s.requirements << "To use Memcached as caching back-end, install the 'dalli' gem."
+  s.requirements << "To use ElastiCache as caching back-end, install the 'dalli-elasticache' gem."
   s.requirements << "To use multipart post, install the 'multipart-post' gem."
   s.requirements << "To use curl as the http engine, install the 'patron' gem. This feature is not available (and should be unneccessary) on jruby."
   s.requirements << "To use eventmachine as a parallel backend, install the 'eventmachine' gem."

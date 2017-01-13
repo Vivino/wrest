@@ -27,6 +27,10 @@ group :redis_support do
   gem 'redis', '~> 3'
 end
 
+group :elasticache_support do
+  gem 'dalli-elasticache'
+end
+
 group :eventmachine_support do
   gem 'eventmachine', '~> 1.0.7'
 end
