@@ -9,15 +9,15 @@
 
 module Wrest::Native
   class Delete < Request
-    def initialize(wrest_uri, parameters = {}, headers = {}, options = {})
+    def initialize(wrest_uri, body = '', headers = {}, parameters = {} ,options = {})
       super(
-            wrest_uri, 
-            Net::HTTP::Delete, 
-            parameters,
-            nil,
-            headers,
-            options
-          )
+          wrest_uri,
+          Net::HTTP::Delete,
+          parameters,
+          body,
+          headers,
+          options
+      )
     end
   end
 end
