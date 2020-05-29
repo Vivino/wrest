@@ -241,7 +241,7 @@ module Wrest #:nodoc:
     # that creates a Wrest::Native::Delete, executes it and returns a Wrest::Native::Response.
     #
     # Remember to escape all parameter strings if necessary, using URI.escape
-    def delete(parameters = {}, headers = {}, body = '', &block)
+    def delete(body = '', headers = {}, parameters = {}, &block)
       build_delete(body, headers, parameters, &block).invoke
     end
 
