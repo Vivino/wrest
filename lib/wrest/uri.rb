@@ -39,7 +39,7 @@ module Wrest #:nodoc:
     # See Wrest::Native::Request for other available options and their default values.
     def initialize(uri_string, options = {})
       @options = options.clone
-      @uri_string = uri_string.to_s
+      @uri_string = CGI.escape(uri_string.to_s.strip)
       @uri = URI.parse(@uri_string)
       uri_scheme = URI.split(@uri_string)
       @uri_path = uri_scheme[-4].split('?').first || ''
